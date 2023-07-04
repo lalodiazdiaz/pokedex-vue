@@ -10,19 +10,32 @@
       />
     </router-link>
     <div class="ml-auto">
-      <router-link to="/login" class="btn btn-outline-primary my-2 my-sm-0"
+      <router-link
+        v-if="!isAuthenticated"
+        to="/login"
+        class="btn btn-outline-primary my-2 my-sm-0"
         >Login</router-link
       >
-      <router-link to="/" class="btn btn-outline-primary my-2 my-sm-0"
-        >Logout</router-link
+      <button
+        v-else
+        class="btn btn-outline-primary my-2 my-sm-0"
+        @click="logout()"
       >
+        Logout
+      </button>
     </div>
   </nav>
 </template>
 
 <script>
+import useAuth from "@/store/auth";
 export default {
   name: "Navbar",
+  setup() {
+    const { isAuthenticated, logout } = useAuth();
+
+    return { isAuthenticated, logout };
+  },
 };
 </script>
 

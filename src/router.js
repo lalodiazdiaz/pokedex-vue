@@ -10,4 +10,11 @@ const router = createRouter({
   ],
 });
 
+import useAuth from "./store/auth";
+router.beforeEach((to, from, next) => {
+  const { isAuthenticated } = useAuth();
+
+  if (to.name === "Login" && isAuthenticated.value) next({ next: "Home" });
+  else next();
+});
 export default router;
