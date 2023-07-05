@@ -5,25 +5,29 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Image</th>
           <th>Name</th>
+          <th>Pokémon</th>
           <th>View</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(pokemon, index) in pokemonList" :key="index">
+        <tr v-for="pokemon in pokemonList" :key="pokemon.id">
           <th>
             {{ pokemon.id }}
           </th>
+          <th>{{ pokemon.name.replace(/^./, (str) => str.toUpperCase()) }}</th>
           <th class="w-25">
             <img
-              class="w-25"
+              style="width: 80px"
               :src="pokemon.sprites.other.home.front_default"
-              alt=""
+              :alt="pokemon.name"
             />
           </th>
-          <th>{{ pokemon.name }}</th>
-          <th><button class="btn btn-primary">View more</button></th>
+          <th>
+            <router-link :to="`/${pokemon.id}`" class="btn btn-primary"
+              >View more</router-link
+            >
+          </th>
         </tr>
       </tbody>
     </table>
@@ -31,24 +35,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import usePoke from "../store/pokemon";
 export default {
   name: "PokemonTable",
   setup() {
-    let pokemon = [];
-    let pokemonList = ref([]);
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
-      .then((response) => response.json())
-      .then(
-        (data) => (
-          (pokemon = data.results),
-          pokemon.forEach((pokemonUrl) => {
-            fetch(pokemonUrl.url)
-              .then((response) => response.json())
-              .then((res) => pokemonList.value.push(res));
-          })
-        )
-      );
+    const { getAllPokemon, pokemonList } = usePoke();
+    getAllPokemon();
 
     return { pokemonList };
   },

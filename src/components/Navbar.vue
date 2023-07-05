@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expanded-md navbar-light bg-light">
+  <nav class="navbar navbar-expanded-md navbar-light bg-light px-4">
     <router-link to="/" class="navbar-brand">
       <img
         src="https://quizizz-destination-bkt.s3.amazonaws.com/new/3aaaf4ba-4f88-44a8-b6ef-e3480aeba7e3.png?w=200&h=200"
@@ -9,16 +9,23 @@
         height="50"
       />
     </router-link>
+    <img
+      src="https://external-preview.redd.it/tQged7mKJ3cUpNMq5IMeceZvyKP3cTyHqhNmKEQ0Vv8.png?auto=webp&s=fb5fd61cae0bc9cde2bc2a006b1e2aeb0c935ce9"
+      alt=""
+      width="200"
+      height="80"
+    />
     <div class="ml-auto">
       <router-link
         v-if="!isAuthenticated"
         to="/login"
-        class="btn btn-outline-primary my-2 my-sm-0"
+        class="btn btn-danger my-2 my-sm-0 btn-lg"
         >Login</router-link
       >
+
       <button
         v-else
-        class="btn btn-outline-primary my-2 my-sm-0"
+        class="btn btn-danger my-2 my-sm-0 btn-lg"
         @click="logout()"
       >
         Logout
