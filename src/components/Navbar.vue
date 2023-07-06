@@ -1,5 +1,8 @@
 <template>
-  <nav class="navbar navbar-expanded-md navbar-light bg-light px-4">
+  <nav
+    class="navbar navbar-expanded-md navbar-light px-4"
+    style="background-color: lightslategrey"
+  >
     <router-link to="/" class="navbar-brand">
       <img
         src="https://quizizz-destination-bkt.s3.amazonaws.com/new/3aaaf4ba-4f88-44a8-b6ef-e3480aeba7e3.png?w=200&h=200"

@@ -1,13 +1,13 @@
 <template>
   <h1>List of pokemon</h1>
-  <div class="container">
-    <table class="table table-striped table-bordered">
+  <div class="container-fluid">
+    <table class="table table-striped table-bordered border border-black px-5">
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Pokémon</th>
-          <th>View</th>
+          <th style="background-color: black; color: white">Id</th>
+          <th style="background-color: black; color: white">Name</th>
+          <th style="background-color: black; color: white">Pokémon</th>
+          <th style="background-color: black; color: white">View</th>
         </tr>
       </thead>
       <tbody>
@@ -16,9 +16,9 @@
             {{ pokemon.id }}
           </th>
           <th>{{ pokemon.name.replace(/^./, (str) => str.toUpperCase()) }}</th>
-          <th class="w-25">
+          <th>
             <img
-              style="width: 80px"
+              width="100"
               :src="pokemon.sprites.other.home.front_default"
               :alt="pokemon.name"
             />
