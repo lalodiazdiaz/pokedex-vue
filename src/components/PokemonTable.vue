@@ -64,7 +64,7 @@
           <th
             class="d-flex w-25 h-100 justify-content-center align-items-center"
           >
-            <router-link :to="`/${index}`" class="btn btn-primary"
+            <router-link :to="`/${index + 1}`" class="btn btn-primary"
               >View more</router-link
             >
           </th>
