@@ -43,7 +43,7 @@
           <th
             class="d-flex w-25 h-100 justify-content-center align-items-center"
           >
-            {{ index }}
+            {{ index + 1 }}
           </th>
           <th
             class="d-flex w-25 h-100 justify-content-center align-items-center"
