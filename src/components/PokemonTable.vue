@@ -1,6 +1,9 @@
 <template>
   <h1>List of pokemon</h1>
-  <div class="container-fluid">
+  <div v-if="!loadingTable">
+    <Loading />
+  </div>
+  <div v-else class="container-fluid">
     <table class="table table-striped table-bordered border border-black px-5">
       <thead>
         <tr>
@@ -36,13 +39,17 @@
 
 <script>
 import usePoke from "../store/pokemon";
+import Loading from "./Loading.vue";
 export default {
   name: "PokemonTable",
+  components: {
+    Loading,
+  },
   setup() {
-    const { getAllPokemon, pokemonList } = usePoke();
+    const { getAllPokemon, pokemonList, loadingTable } = usePoke();
     getAllPokemon();
 
-    return { pokemonList };
+    return { pokemonList, loadingTable };
   },
 };
 </script>
