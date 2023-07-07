@@ -37,13 +37,13 @@
       <tbody>
         <tr
           style="height: 100px; display: flex"
-          v-for="pokemon in pokemonList"
-          :key="pokemon.id"
+          v-for="(pokemon, index) of pokemonList"
+          :key="index"
         >
           <th
             class="d-flex w-25 h-100 justify-content-center align-items-center"
           >
-            {{ pokemon.id }}
+            {{ index }}
           </th>
           <th
             class="d-flex w-25 h-100 justify-content-center align-items-center"
@@ -55,14 +55,16 @@
           >
             <img
               width="100"
-              :src="pokemon.sprites.other.home.front_default"
+              v-bind:src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${
+                index + 1
+              }.png`"
               :alt="pokemon.name"
             />
           </th>
           <th
             class="d-flex w-25 h-100 justify-content-center align-items-center"
           >
-            <router-link :to="`/${pokemon.id}`" class="btn btn-primary"
+            <router-link :to="`/${index}`" class="btn btn-primary"
               >View more</router-link
             >
           </th>

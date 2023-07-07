@@ -8,26 +8,33 @@ const state = reactive({
 });
 
 export default function usePoke() {
-  const getAllPokemon = async () => {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
-      .then((response) => response.json())
-      .then((data) =>
-        data.results.forEach((pokemonUrl) => {
-          fetch(pokemonUrl.url)
-            .then((response) => response.json())
-            .then(
-              (res) => state.pokemonList.push(res),
-              setTimeout(() => {
-                state.loadingTable = true;
-              }, 1500)
-            );
-        })
-      );
+  const getAllPokemon = () => {
+    if (state.pokemonList.length === 0) {
+      //fetch
+      fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
+        .then((response) => response.json())
+        .then(
+          (data) => (
+            (state.pokemonList = data.results),
+            setTimeout(() => {
+              state.loadingTable = true;
+            }, 1500)
+          )
+          // data.results.forEach(async (pokemonUrl) => {
+          //   console.log(pokemonUrl);
+          //   await fetch(pokemonUrl.url)
+          //     .then((response) => response.json())
+          //     .then(
+          //       (res) => (state.pokemonList = [...state.pokemonList, res]),
+
+          //     );
+          // })
+        );
+    }
   };
 
-  const getPokemon = (id) => {
-    state.loading = false;
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  const getPokemon = async (id) => {
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => response.json())
       .then(
         (data) => (
