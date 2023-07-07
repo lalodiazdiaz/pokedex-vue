@@ -9,12 +9,9 @@
         style="width: 100%; height: 100%"
       >
         <CardImage :pokemonData="pokemonData" />
-        <!-- stats -->
         <CardStats :pokemonData="pokemonData" />
         <div style="width: 20%">
-          <!-- abilities -->
           <CardAbilities :pokemonData="pokemonData" />
-          <!-- moves -->
           <CardMoves :pokemonData="pokemonData" />
         </div>
       </div>

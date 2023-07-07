@@ -1,7 +1,7 @@
 <template>
   <div class="card mt-3" style="width: 40%; height: 100%">
     <div
-      class="cart-header border-top border-end border-start border-black"
+      class="cart-header border-top border-end border-start border-black rounded-top"
       style="background-color: black; color: white"
     >
       <h2>
@@ -22,7 +22,7 @@
       <h2>Types</h2>
     </div>
     <div
-      class="cart-footer d-flex flex-row justify-content-around border border-black"
+      class="cart-footer d-flex flex-row justify-content-around border border-black rounded-bottom"
     >
       <h2 v-for="(type, index) in pokemonData.types" :key="index">
         {{ type.type.name.replace(/^./, (str) => str.toUpperCase()) }}
