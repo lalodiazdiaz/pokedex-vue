@@ -1,32 +1,67 @@
 <template>
-  <h1>List of pokemon</h1>
   <div v-if="!loadingTable">
     <Loading />
   </div>
   <div v-else class="container-fluid">
+    <h1>List of pokemon</h1>
+
     <table class="table table-striped table-bordered border border-black px-5">
       <thead>
-        <tr>
-          <th style="background-color: black; color: white">Id</th>
-          <th style="background-color: black; color: white">Name</th>
-          <th style="background-color: black; color: white">Pokémon</th>
-          <th style="background-color: black; color: white">View</th>
+        <tr style="height: 50px; display: flex">
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+            style="background-color: black; color: white"
+          >
+            Id
+          </th>
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+            style="background-color: black; color: white"
+          >
+            Name
+          </th>
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+            style="background-color: black; color: white"
+          >
+            Pokémon
+          </th>
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+            style="background-color: black; color: white"
+          >
+            View
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="pokemon in pokemonList" :key="pokemon.id">
-          <th>
+        <tr
+          style="height: 100px; display: flex"
+          v-for="pokemon in pokemonList"
+          :key="pokemon.id"
+        >
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+          >
             {{ pokemon.id }}
           </th>
-          <th>{{ pokemon.name.replace(/^./, (str) => str.toUpperCase()) }}</th>
-          <th>
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+          >
+            {{ pokemon.name.replace(/^./, (str) => str.toUpperCase()) }}
+          </th>
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+          >
             <img
               width="100"
               :src="pokemon.sprites.other.home.front_default"
               :alt="pokemon.name"
             />
           </th>
-          <th>
+          <th
+            class="d-flex w-25 h-100 justify-content-center align-items-center"
+          >
             <router-link :to="`/${pokemon.id}`" class="btn btn-primary"
               >View more</router-link
             >

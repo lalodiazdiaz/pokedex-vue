@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      src="https://orig00.deviantart.net/f60e/f/2017/042/0/7/pokeball_gif_by_termatior0-dayo3ow.gif"
+      src="https://orig00.deviantart.net/be31/f/2017/197/d/b/poke_ball_gif_by_cameronhops-dbgkdxc.gif"
       alt="Loading"
       width="600"
     />
